@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+option objc_class_prefix = "HSW";
+
+package helloworld;
+
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  rpc printAge (printAgeRequest) returns (printAgeReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+  string city = 2;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message printAgeRequest {
+  string age = 1;
+}
+
+message printAgeReply {
+  string text = 1;
+}
