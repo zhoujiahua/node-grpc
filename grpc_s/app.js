@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
@@ -20,6 +19,7 @@ const hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld;
 function sayHello2(call, callback) {
     try {
         let data = 'hello ' + call.request.name + ' and city is ' + call.request.city;
+        console.log(call);
         callback && callback(null, {
             message: data
         })
@@ -32,6 +32,7 @@ function sayHello2(call, callback) {
 function printAge2(call, callback) {
     try {
         let text = 'current age is ' + call.request.age;
+        console.log(call);
         callback && callback(null, {
             text
         })
@@ -55,7 +56,7 @@ function main() {
         SayHello: sayHello2,
         printAge: printAge2
     });
-    server.bind('127.0.0.1:50051', grpc.ServerCredentials.createInsecure());
+    server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
     server.start();
     console.log('server start......')
 }

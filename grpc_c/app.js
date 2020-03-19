@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
@@ -38,11 +36,11 @@ function main() {
         }
         console.log('Text is : ', response.text)
     }
-    
+
     // 调用存根上的方法，传入请求和回调函数
     client.sayHello({
         name: 'locy',
-        city: '上海'
+        city: '西安华讯科技'
     }, getMessage);
     client.printAge({
         age: '45'
